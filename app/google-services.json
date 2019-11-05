@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "236968615752",
+    "firebase_url": "https://dndfirebaseproject-313ab.firebaseio.com",
+    "project_id": "dndfirebaseproject-313ab",
+    "storage_bucket": "dndfirebaseproject-313ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236968615752:android:812da135ceb4e023889d7d",
+        "android_client_info": {
+          "package_name": "com.project.balmer.dnd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236968615752-k1e3pksgqc3rmk5thgscrrkltabo1m53.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.balmer.dnd",
+            "certificate_hash": "a310c843edbbbbced10828fa10b41462efcfbe98"
+          }
+        },
+        {
+          "client_id": "236968615752-05di4f957r98cro1mo1ilmrsigvakl8j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMtKib8ZVKSQJuglBoG8hkIMFvpWLlpQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236968615752-05di4f957r98cro1mo1ilmrsigvakl8j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
