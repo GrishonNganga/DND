@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.project.balmer.dnd.Model.GoodInfo;
 import com.project.balmer.dnd.R;
@@ -23,6 +24,7 @@ public class ShopFragment extends Fragment {
     private ShopViewModel shopViewModel;
     private RecyclerView recyclerView;
     private ShopAdapter adapter;
+    private ImageView shopImageView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

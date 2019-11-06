@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModel;
 
 import com.project.balmer.dnd.Model.CustomerInfo;
 import com.project.balmer.dnd.Model.GoodInfo;
+import com.project.balmer.dnd.Model.ShopInfo;
 import com.project.balmer.dnd.repository.DataManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.project.balmer.dnd.repository.DataManager.getdm;
@@ -19,6 +21,7 @@ public class ShopViewModel extends ViewModel {
     private DataManager dataManager;
     private MutableLiveData<CustomerInfo> customerInfo;
     private MutableLiveData<String>  quantity;
+    private MutableLiveData<String> shopImage;
 
     public LiveData<List<GoodInfo>> getGoods(){
 
@@ -62,6 +65,14 @@ public class ShopViewModel extends ViewModel {
 
         quantity.setValue(String.valueOf(hold));
 
+    }
+    public LiveData<String> getImage(int i){
+        MutableLiveData<List<ShopInfo>> shops = dataManager.getShops();
+        List<ShopInfo> shop = shops.getValue();
+        ShopInfo shopInfo = shop.get(i);
+        shopImage = new MutableLiveData<>();
+        shopImage.setValue(shopInfo.getImage());
+        return shopImage;
     }
 
 }

@@ -5,6 +5,7 @@ public class ShopInfo {
     private String name;
     private String location;
     private GoodInfo goodInfo;
+    private String image;
 
     public String getId() {
         return id;
@@ -38,10 +39,20 @@ public class ShopInfo {
         this.goodInfo = goodInfo;
     }
 
-    public ShopInfo(String id, String name, String location, GoodInfo goodInfo){
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public ShopInfo(String id, String name, String location, GoodInfo goodInfo, String image){
         this.id = id;
         this.name = name;
         this.location = location;
         this.goodInfo = goodInfo;
+        this.image = image;
+
     }
 }

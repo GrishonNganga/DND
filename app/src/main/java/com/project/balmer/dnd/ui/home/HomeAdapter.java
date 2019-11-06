@@ -1,10 +1,10 @@
 package com.project.balmer.dnd.ui.home;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -46,6 +46,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ShopHolder> {
         GoodInfo goodInfo = shopInfo.getGoodInfo();
         String name = shopInfo.getName();
         holder.shopName.setText(name);
+        int resourceId = context.getResources().getIdentifier(shopInfo.getImage(), "drawable", context.getPackageName());
+        holder.shopImage.setImageResource(resourceId);
         if (shopInfo.getGoodInfo() == null){
             holder.shopGoods.setText("");
         }else if (shopInfo.getGoodInfo().getName() == null){
@@ -62,11 +64,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ShopHolder> {
     public class ShopHolder extends RecyclerView.ViewHolder{
 
         public TextView shopName, shopGoods;
+        public ImageView shopImage;
 
         public ShopHolder(@NonNull final View itemView) {
             super(itemView);
             shopName = itemView.findViewById(R.id.shopName);
             shopGoods = itemView.findViewById(R.id.goodInfo);
+            shopImage = itemView.findViewById(R.id.homeImage);
 
             itemView.setOnClickListener(
                     Navigation.createNavigateOnClickListener(R.id.action_nav_home_to_shopFragment));
