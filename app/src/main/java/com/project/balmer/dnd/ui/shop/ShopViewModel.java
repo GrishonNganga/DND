@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.project.balmer.dnd.Model.CustomerInfo;
 import com.project.balmer.dnd.Model.GoodInfo;
+import com.project.balmer.dnd.Model.OrderInfo;
 import com.project.balmer.dnd.Model.ShopInfo;
 import com.project.balmer.dnd.repository.DataManager;
 
@@ -20,8 +21,8 @@ public class ShopViewModel extends ViewModel {
     private MutableLiveData<List<GoodInfo>> goods;
     private DataManager dataManager;
     private MutableLiveData<CustomerInfo> customerInfo;
-    private MutableLiveData<String>  quantity;
-    private MutableLiveData<String> shopImage;
+    private MutableLiveData<String>  quantity = new MutableLiveData<>();
+    private MutableLiveData<OrderInfo> orders = new MutableLiveData<>();
 
     public LiveData<List<GoodInfo>> getGoods(){
 
@@ -43,11 +44,14 @@ public class ShopViewModel extends ViewModel {
         return customerInfo;
     }
 
-    public LiveData<String> getQuantity(){
-        quantity = new MutableLiveData<>();
+    public void initQuantity(){
         quantity.setValue("0");
+    }
+    public LiveData<String> getQuantity(){
+        //quantity.setValue("0");
         return quantity;
     }
+
     public void addQuantity(){
         String quant = quantity.getValue();
         int hold = Integer.parseInt(quant);
@@ -56,6 +60,7 @@ public class ShopViewModel extends ViewModel {
         quantity.setValue(String.valueOf(hold));
 
     }
+
     public void removeQuantity(){
         String quant = quantity.getValue();
         int hold = Integer.parseInt(quant);
@@ -65,14 +70,6 @@ public class ShopViewModel extends ViewModel {
 
         quantity.setValue(String.valueOf(hold));
 
-    }
-    public LiveData<String> getImage(int i){
-        MutableLiveData<List<ShopInfo>> shops = dataManager.getShops();
-        List<ShopInfo> shop = shops.getValue();
-        ShopInfo shopInfo = shop.get(i);
-        shopImage = new MutableLiveData<>();
-        shopImage.setValue(shopInfo.getImage());
-        return shopImage;
     }
 
 }

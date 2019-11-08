@@ -4,6 +4,7 @@ public class OrderInfo {
     private String orderNo;
     private CustomerInfo customerInfo;
     private GoodInfo goodInfo;
+    private String quantity;
 
     public String getOrderNo() {
         return orderNo;
@@ -29,9 +30,18 @@ public class OrderInfo {
         this.goodInfo = goodInfo;
     }
 
-    public OrderInfo(String orderNo, CustomerInfo customerInfo, GoodInfo goodInfo){
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+
+    public OrderInfo(String orderNo, CustomerInfo customerInfo, GoodInfo goodInfo, String quantity ){
         this.orderNo = orderNo;
         this.customerInfo = customerInfo;
         this.goodInfo = goodInfo;
+        this.quantity = quantity;
     }
 }

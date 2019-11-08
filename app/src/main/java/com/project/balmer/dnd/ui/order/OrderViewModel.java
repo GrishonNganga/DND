@@ -13,10 +13,11 @@ import static com.project.balmer.dnd.repository.DataManager.getdm;
 
 public class OrderViewModel extends ViewModel {
 
-    private MutableLiveData<List<OrderInfo>> orders;
+    private static MutableLiveData<List<OrderInfo>> orders;
     private DataManager dataManager;
+    private List<OrderInfo> ordersUpdated;
 
-    public LiveData<List<OrderInfo>> getOrders(){
+    public static LiveData<List<OrderInfo>> getOrders(){
         return orders;
     }
 
@@ -27,6 +28,19 @@ public class OrderViewModel extends ViewModel {
         dataManager = getdm();
         orders = new MutableLiveData<>();
         orders = dataManager.getOrders();
+    }
+    public void addOrder(OrderInfo orderInfo){
+        ordersUpdated = orders.getValue();
+        ordersUpdated.add(orderInfo);
+        orders.setValue(ordersUpdated);
+
+    }
+
+    public void removeOrder(OrderInfo orderInfo){
+        ordersUpdated = orders.getValue();
+        ordersUpdated.remove(orderInfo);
+        orders.setValue(ordersUpdated);
+
     }
 
 
