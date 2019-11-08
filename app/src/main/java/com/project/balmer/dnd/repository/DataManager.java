@@ -18,8 +18,8 @@ public class DataManager {
 
     }
     CustomerInfo customerInfo = new CustomerInfo("001", "Grishon Gikima", "0729400426", null);
-    ShopInfo shopInfo = new ShopInfo("0001", "Safari Park", "Kasarani", null);
-    GoodInfo goodInfo = new GoodInfo("0001","Pizza", "The best pizza you have ever tasted", shopInfo, "1500");
+    ShopInfo shopInfo = new ShopInfo("0001", "Safari Park", "Kasarani", null, "food6.jpg");
+    GoodInfo goodInfo = new GoodInfo("0001","Pizza", "The best pizza you have ever tasted", shopInfo, "Ksh 1500", "food3");
     private FirebaseUtil firebaseUtil;
 
     private ArrayList<ShopInfo> shops = new ArrayList<>();
@@ -58,40 +58,40 @@ public class DataManager {
     }
 
     private void setGoods() {
-        goods.add(new GoodInfo("001", "Cassava", "Nduma imewekwa kwa mafuta", null, "1200"));
+        goods.add(new GoodInfo("001", "Cassava", "Nduma imewekwa kwa mafuta", null, "Ksh 1200", "food5"));
 
-        goods.add(new GoodInfo("002", "Chips", "Best chips you will ever taste my friend", null, "1000"));
+        goods.add(new GoodInfo("002", "Chips", "Best chips you will ever taste my friend", null, "Ksh 1000", "food7"));
 
-        goods.add(new GoodInfo("003", "Tea", "Chai moto ya maziwa", null, "500"));
+        goods.add(new GoodInfo("003", "Tea", "Chai moto ya maziwa", null, "Ksh 500", "food8"));
 
-        goods.add(new GoodInfo("004", "Soup", "Cow soup", null, "300"));
+        goods.add(new GoodInfo("004", "Soup", "Cow soup", null, "Ksh 300", "food11"));
 
-        goods.add(new GoodInfo("005", "Chicken", "Grilled chicken. Zile za pono", null, "600"));
+        goods.add(new GoodInfo("005", "Chicken", "Grilled chicken. Zile za pono", null, "Ksh 600", "food9"));
 
-        goods.add(new GoodInfo("006", "Kebab", "Very sweet kebab", null, "100"));
+        goods.add(new GoodInfo("006", "Kebab", "Very sweet kebab", null, "Ksh 100", "food10"));
 
 
     }
 
     private void setShops(){
-        shops.add(new ShopInfo("0002", "Kempinsky", "Nairobi", goodInfo));
+        shops.add(new ShopInfo("0002", "Kempinsky", "Nairobi", goodInfo, "food1"));
 
-        shops.add(new ShopInfo("00004", "NewsCafe", "Nairobi", goodInfo));
+        shops.add(new ShopInfo("00004", "NewsCafe", "Nairobi", goodInfo, "food2"));
 
-        shops.add(new ShopInfo("0005", "Kibandansky", "Westlands", goodInfo));
+        shops.add(new ShopInfo("0005", "Kibandansky", "Westlands", goodInfo, "food3"));
 
-        shops.add(new ShopInfo("0006", "Chipotle", "Wisconsin", goodInfo));
+        shops.add(new ShopInfo("0006", "Chipotle", "Wisconsin", goodInfo, "food4"));
 
-        shops.add(new ShopInfo("0007", "Pizza Inn", "Town CBD", null));
+        shops.add(new ShopInfo("0007", "Pizza Inn", "Town CBD", null, "food5"));
     }
 
     private void setOrders(){
-        orders.add(new OrderInfo("001", customerInfo, goodInfo));
-        orders.add(new OrderInfo("002", customerInfo, goodInfo));
-        orders.add(new OrderInfo("003", customerInfo, goodInfo));
-        orders.add(new OrderInfo("004", customerInfo, goodInfo));
-        orders.add(new OrderInfo("005", customerInfo, goodInfo));
-        orders.add(new OrderInfo("006", customerInfo, goodInfo));
+        orders.add(new OrderInfo("001", customerInfo, goodInfo, null));
+        orders.add(new OrderInfo("002", customerInfo, goodInfo, null));
+        orders.add(new OrderInfo("003", customerInfo, goodInfo, null));
+        orders.add(new OrderInfo("004", customerInfo, goodInfo, null));
+        orders.add(new OrderInfo("005", customerInfo, goodInfo, null));
+        orders.add(new OrderInfo("006", customerInfo, goodInfo, null));
     }
 
 }

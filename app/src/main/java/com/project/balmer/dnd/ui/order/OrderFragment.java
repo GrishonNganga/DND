@@ -41,7 +41,7 @@ public class OrderFragment extends Fragment {
         recyclerView = root.findViewById(R.id.orderRecyclerView);
         GridLayoutManager layoutManager = new GridLayoutManager(root.getContext(), 1 );
         recyclerView.setLayoutManager(layoutManager);
-        orderAdapter = new OrderAdapter(root.getContext(), orderViewModel.getOrders().getValue());
+        orderAdapter = new OrderAdapter(root.getContext(), orderViewModel.getOrders().getValue(), this);
         recyclerView.setAdapter(orderAdapter);
 
         orderViewModel.getOrders().observe(this, new Observer<List<OrderInfo>>() {

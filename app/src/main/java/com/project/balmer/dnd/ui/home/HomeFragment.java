@@ -27,14 +27,8 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private HomeViewModel homeViewModel;
     private HomeAdapter adapter;
-    NavController controller = null;
+    private ShopInfo shopInfo;
 
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        controller = Navigation.findNavController(view);
-    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -46,8 +40,10 @@ public class HomeFragment extends Fragment {
         recyclerView = root.findViewById(R.id.homeRecyclerView);
         GridLayoutManager layoutManager = new GridLayoutManager(root.getContext(),1);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new HomeAdapter(root.getContext(), homeViewModel.getShops().getValue());
+        adapter = new HomeAdapter(root.getContext(), homeViewModel.getShops().getValue(),HomeFragment.this);
         recyclerView.setAdapter(adapter);
+
+
 
         homeViewModel.getShops().observe(this, new Observer<List<ShopInfo>>() {
             @Override

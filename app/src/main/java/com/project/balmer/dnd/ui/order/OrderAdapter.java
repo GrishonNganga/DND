@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.balmer.dnd.Model.OrderInfo;
@@ -18,6 +20,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
 
     private Context context;
     private List<OrderInfo> orders;
+    private Fragment fragment;
 
     @NonNull
     @Override
@@ -27,9 +30,10 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
          OrderHolder holder = new OrderHolder(view);
         return holder;
     }
-    public OrderAdapter(Context mContext, List<OrderInfo> mOrders){
+    public OrderAdapter(Context mContext, List<OrderInfo> mOrders, Fragment fragment){
         context = mContext;
         orders = mOrders;
+        this.fragment = fragment;
     }
 
     @Override
@@ -38,6 +42,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
         holder.goodOrderName.setText(orderInfo.getGoodInfo().getName());
         holder.goodOrderDescription.setText(orderInfo.getGoodInfo().getDescription());
         holder.goodOrderPrice.setText(orderInfo.getGoodInfo().getPrice());
+        holder.goodQuantity.setText(orderInfo.getQuantity());
+        holder.goodQuantity.append(" X");
     }
 
 
@@ -49,12 +55,21 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
 
     public class OrderHolder extends RecyclerView.ViewHolder{
 
-        private TextView goodOrderName, goodOrderDescription, goodOrderPrice;
+        private TextView goodOrderName, goodOrderDescription, goodOrderPrice, goodQuantity;
         public OrderHolder(@NonNull View itemView) {
             super(itemView);
             goodOrderName = itemView.findViewById(R.id.goodOrderName);
             goodOrderDescription = itemView.findViewById(R.id.goodOrderDescription);
             goodOrderPrice = itemView.findViewById(R.id.goodOrderPrice);
+            goodQuantity = itemView.findViewById(R.id.howMany);
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    OrderViewModel orderViewModel = ViewModelProviders.of(fragment).get(OrderViewModel.class);
+                    orderViewModel.removeOrder(orders.get(getAdapterPosition()));
+                    return false;
+                }
+            });
         }
     }
 }

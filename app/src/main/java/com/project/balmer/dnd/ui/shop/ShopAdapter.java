@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.balmer.dnd.Model.GoodInfo;
+import com.project.balmer.dnd.Model.ShopInfo;
 import com.project.balmer.dnd.R;
 
 
@@ -23,9 +24,9 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.GoodHolder> {
     private List<GoodInfo> goods;
     private Context context, context1;
 
-    public ShopAdapter(Context mContext, List<GoodInfo> mGoods){
+    public ShopAdapter(Context mContext, List<GoodInfo> mGoods) {
         context = mContext;
-         goods = mGoods;
+        goods = mGoods;
 
     }
 
@@ -42,11 +43,15 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.GoodHolder> {
     @Override
     public void onBindViewHolder(@NonNull GoodHolder holder, int position) {
         GoodInfo goodInfo = goods.get(position);
+        ShopInfo shopInfo = goodInfo.getShopInfo();
         String name = goodInfo.getName();
         holder.goodName.setText(name);
-        if (goodInfo.getDescription() == null){
+        if (goodInfo.getDescription() == null) {
             holder.goodPrice.setText("");
-        }holder.goodPrice.setText(goodInfo.getDescription());
+        }
+        holder.goodPrice.setText(goodInfo.getDescription());
+        int drawableId = context.getResources().getIdentifier(goodInfo.getImage(), "drawable", context.getPackageName());
+        holder.goodImage.setImageResource(drawableId);
 
     }
 
@@ -55,20 +60,27 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.GoodHolder> {
         return goods.size();
     }
 
-    public class GoodHolder extends RecyclerView.ViewHolder{
+    public class GoodHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView goodName, goodPrice;
-        public ImageView goodImage;
+        public ImageView goodImage, shopImage;
 
         public GoodHolder(@NonNull final View itemView) {
             super(itemView);
             goodName = itemView.findViewById(R.id.goodName);
             goodPrice = itemView.findViewById(R.id.goodPrice);
+            goodImage = itemView.findViewById(R.id.shopGoodImage);
+            itemView.setOnClickListener(this);
+        }
 
-            itemView.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_shopFragment_to_shopOrder));
+        @Override
+        public void onClick(View view) {
+            ShopFragmentDirections.ActionShopFragmentToShopOrder action = ShopFragmentDirections.actionShopFragmentToShopOrder(goods.get(getAdapterPosition()));
+            Navigation.findNavController(view).navigate(action);
         }
     }
 }
+
 
 
 

@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_shopFragment_to_shopOrder"
             app:destination="@id/shopOrder" />
+        <argument
+            android:name="shop"
+            app:argType="com.project.balmer.dnd.Model.ShopInfo" />
     </fragment>
     <fragment
         android:id="@+id/shopOrder"
@@ -53,6 +56,9 @@
         <action
             android:id="@+id/action_shopOrder_to_nav_slideshow"
             app:destination="@id/nav_slideshow" />
+        <argument
+            android:name="good"
+            app:argType="com.project.balmer.dnd.Model.GoodInfo" />
     </fragment>
 
 </navigation>
