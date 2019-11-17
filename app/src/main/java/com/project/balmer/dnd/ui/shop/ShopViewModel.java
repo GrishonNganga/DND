@@ -22,12 +22,6 @@ public class ShopViewModel extends ViewModel {
     private DataManager dataManager;
     private MutableLiveData<CustomerInfo> customerInfo;
     private MutableLiveData<String>  quantity = new MutableLiveData<>();
-    private MutableLiveData<OrderInfo> orders = new MutableLiveData<>();
-
-    public LiveData<List<GoodInfo>> getGoods(){
-
-        return goods;
-    }
 
     public void init() {
         if (goods != null) {
@@ -35,23 +29,36 @@ public class ShopViewModel extends ViewModel {
         }
         dataManager = getdm();
         goods = new MutableLiveData<>();
-        goods = dataManager.getGoods();
+        dataManager.getGoodss(new DataManager.GoodCallBack() {
+            @Override
+            public void onSuccess(List<GoodInfo> goodInfos) {
+                goods.setValue(goodInfos);
+            }
+        });
         customerInfo = dataManager.getCustomer();
     }
 
+    public LiveData<List<GoodInfo>> getGoodss(){
+        return goods;
+    }
+
+    //Used in ShopOrder
     public LiveData<CustomerInfo> getCustomer(){
         customerInfo = new MutableLiveData<>();
         return customerInfo;
     }
 
+    //Used in ShopOrder
     public void initQuantity(){
         quantity.setValue("0");
     }
+
     public LiveData<String> getQuantity(){
         //quantity.setValue("0");
         return quantity;
     }
 
+    //Used in ShopOrder
     public void addQuantity(){
         String quant = quantity.getValue();
         int hold = Integer.parseInt(quant);
@@ -61,6 +68,7 @@ public class ShopViewModel extends ViewModel {
 
     }
 
+    //Used in ShopOPder
     public void removeQuantity(){
         String quant = quantity.getValue();
         int hold = Integer.parseInt(quant);

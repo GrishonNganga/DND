@@ -39,9 +39,16 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
     @Override
     public void onBindViewHolder(@NonNull OrderHolder holder, int position) {
         OrderInfo orderInfo = orders.get(position);
+        int quantity = Integer.parseInt(orderInfo.getQuantity());
+        int unitPrice = Integer.parseInt(orderInfo.getGoodInfo().getPrice());
         holder.goodOrderName.setText(orderInfo.getGoodInfo().getName());
-        holder.goodOrderDescription.setText(orderInfo.getGoodInfo().getDescription());
-        holder.goodOrderPrice.setText(orderInfo.getGoodInfo().getPrice());
+        if (orderInfo.getGoodInfo().getDescription().length() >45){
+            String s = orderInfo.getGoodInfo().getDescription().substring(0, 40) + "...";
+            holder.goodOrderDescription.setText(s);
+
+        }else
+            holder.goodOrderDescription.setText(orderInfo.getGoodInfo().getDescription());
+        holder.goodOrderPrice.setText(String.valueOf(unitPrice * quantity));
         holder.goodQuantity.setText(orderInfo.getQuantity());
         holder.goodQuantity.append(" X");
     }

@@ -3,19 +3,39 @@ package com.project.balmer.dnd.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class GoodInfo implements Parcelable {
+    @SerializedName("id")
+    @Expose
     private String id;
+
+    @SerializedName("name")
+    @Expose
     private String name;
+
+    @SerializedName("description")
+    @Expose
     private String description;
-    private ShopInfo shopInfo;
+
+    @SerializedName("shop")
+    @Expose
+    private String shopInfo;
+
+    @SerializedName("price")
+    @Expose
     private String price;
+
+    @SerializedName("image")
+    @Expose
     private String image;
 
     protected GoodInfo(Parcel in) {
         id = in.readString();
         name = in.readString();
         description = in.readString();
-        shopInfo = in.readParcelable(ShopInfo.class.getClassLoader());
+        shopInfo = in.readString();
         price = in.readString();
         image = in.readString();
     }
@@ -56,11 +76,11 @@ public class GoodInfo implements Parcelable {
         this.description = description;
     }
 
-    public ShopInfo getShopInfo() {
+    public String getShopInfo() {
         return shopInfo;
     }
 
-    public void setShopInfo(ShopInfo shopInfo) {
+    public void setShopInfo(String shopInfo) {
         this.shopInfo = shopInfo;
     }
 
@@ -80,7 +100,7 @@ public class GoodInfo implements Parcelable {
         this.image = image;
     }
 
-    public GoodInfo(String goodId, String name, String description, ShopInfo shopInfo, String price, String image){
+    public GoodInfo(String goodId, String name, String description, String shopInfo, String price, String image){
         this.id = goodId;
         this.name = name;
         this.description = description;
@@ -99,7 +119,7 @@ public class GoodInfo implements Parcelable {
         parcel.writeString(id);
         parcel.writeString(name);
         parcel.writeString(description);
-        parcel.writeParcelable(shopInfo, i);
+        parcel.writeString(shopInfo);
         parcel.writeString(price);
         parcel.writeString(image);
     }

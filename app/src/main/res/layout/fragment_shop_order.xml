@@ -58,17 +58,21 @@
         android:layout_marginTop="16dp"
         android:text="9 Pieces of Chicken, 1 Family size chips, 1 large colesaw and 2L Coke"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="@+id/goodImage"
         app:layout_constraintStart_toStartOf="@+id/goodImage"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/checkOutBtn"
         app:layout_constraintEnd_toEndOf="@+id/goodImage"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/goodImage">
 
         <TextView
@@ -120,10 +124,9 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:text="Checkout"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/goodImage"
-        app:layout_constraintTop_toBottomOf="@+id/goodDescription"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/goodImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

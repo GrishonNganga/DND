@@ -13,9 +13,6 @@ public class HomeShopSharedViewModel extends ViewModel {
 
     private MutableLiveData<ShopInfo> shopInfo = new MutableLiveData<>();
 
-    public void select(ShopInfo shopInfo) {
-        this.shopInfo.setValue(shopInfo);
-    }
     public LiveData<ShopInfo> getShop() {
         return shopInfo;
     }

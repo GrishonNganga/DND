@@ -85,9 +85,6 @@ public class ShopOrder extends Fragment {
 
             }
         });
-
-
-
         return view;
     }
 
@@ -160,10 +157,6 @@ public class ShopOrder extends Fragment {
     private void displayCheckOut(String quanti) {
 
         int check = Integer.parseInt(quanti);
-        if (check > 0){
-            //Moved that control to addToCartBtn.
-            //checkOut.setVisibility(View.VISIBLE);
-        }
         if (check == 0)
         checkOut.setVisibility(View.INVISIBLE);
     }

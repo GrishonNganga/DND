@@ -20,6 +20,7 @@ import com.project.balmer.dnd.Model.GoodInfo;
 import com.project.balmer.dnd.Model.ShopInfo;
 import com.project.balmer.dnd.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -45,22 +46,31 @@ public class ShopFragment extends Fragment {
         shopViewModel =
                 ViewModelProviders.of(this).get(ShopViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_shop, container, false);
+        shopViewModel.init();
+
         shopImageView = root.findViewById(R.id.homeImage);
         shopName = root.findViewById(R.id.shopNameTitle);
-        shopViewModel.init();
-        recyclerView = root.findViewById(R.id.shopRecyclerView);
-        GridLayoutManager layoutManager = new GridLayoutManager(root.getContext(), 1);
-        recyclerView.setLayoutManager(layoutManager);
-        adapter = new ShopAdapter(root.getContext(), shopViewModel.getGoods().getValue());
-        recyclerView.setAdapter(adapter);
 
         int drawableId = root.getContext().getResources().getIdentifier(shopInfo.getImage(), "drawable", root.getContext().getPackageName());
         shopImageView.setImageResource(drawableId);
         shopName.setText(shopInfo.getName());
 
-        shopViewModel.getGoods().observe(this, new Observer<List<GoodInfo>>() {
+        shopViewModel.getGoodss().observe(this, new Observer<List<GoodInfo>>() {
             @Override
             public void onChanged(List<GoodInfo> goodInfos) {
+                List<GoodInfo> newList = new ArrayList<>();
+                for (GoodInfo goods : goodInfos){
+                    if (goods.getShopInfo().equals(shopInfo.getId())){
+                        Log.e("Used", goods.getName());
+                        newList.add(goods);
+                    }
+
+                }
+                recyclerView = root.findViewById(R.id.shopRecyclerView);
+                GridLayoutManager layoutManager = new GridLayoutManager(root.getContext(), 1);
+                recyclerView.setLayoutManager(layoutManager);
+                adapter = new ShopAdapter(root.getContext(), newList);
+                recyclerView.setAdapter(adapter);
 
             }
         });
