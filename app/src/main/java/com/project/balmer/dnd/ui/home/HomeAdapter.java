@@ -27,13 +27,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ShopHolder> {
     private List<ShopInfo> shops;
     private Context context;
     private Context context1;
-    private ShopInfo shopInfo;
-    private Fragment fragment;
 
-    public HomeAdapter(Context mContext, List<ShopInfo> mShops, Fragment fragment) {
+    public HomeAdapter(Context mContext, List<ShopInfo> mShops) {
         context = mContext;
         shops = mShops;
-        this.fragment = fragment;
 
 
     }
@@ -51,16 +48,16 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ShopHolder> {
     @Override
     public void onBindViewHolder(@NonNull ShopHolder holder, int position) {
         final ShopInfo shopInfo = shops.get(position);
-        GoodInfo goodInfo = shopInfo.getGoodInfo();
+        List<GoodInfo> goodInfoList = shopInfo.getGoodInfo();
         String name = shopInfo.getName();
         holder.shopName.setText(name);
         int resourceId = context.getResources().getIdentifier(shopInfo.getImage(), "drawable", context.getPackageName());
         holder.shopImage.setImageResource(resourceId);
         if (shopInfo.getGoodInfo() == null) {
             holder.shopGoods.setText("");
-        } else if (shopInfo.getGoodInfo().getName() == null) {
+        } else if (shopInfo.getGoodInfo().get(position).getName() == null) {
             holder.shopGoods.setText("");
-        } else holder.shopGoods.setText(goodInfo.getName());
+        } else holder.shopGoods.setText(goodInfoList.get(position).getName());
 
     }
 

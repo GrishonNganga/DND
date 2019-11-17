@@ -1,5 +1,7 @@
 package com.project.balmer.dnd.ui.home;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -13,20 +15,26 @@ import static com.project.balmer.dnd.repository.DataManager.getdm;
 
 public class HomeViewModel extends ViewModel {
 
-    private MutableLiveData<List<ShopInfo>> shops;
+    private MutableLiveData<List<ShopInfo>> shopList;
+    private List<ShopInfo> shops;
     private DataManager dataManager;
 
-       public void init(){
-        if (shops != null){
+    public void init() {
+        if (shopList != null) {
             return;
         }
         dataManager = getdm();
-        shops = new MutableLiveData<>();
-        shops = dataManager.getShops();
+        shopList = new MutableLiveData<>();
+        dataManager.getShops(new DataManager.ShopCallBack() {
+            @Override
+            public void onSuccess(List<ShopInfo> shopInfos) {
+                shopList.setValue(shopInfos);
+                Log.e("Shop on VModel", String.valueOf(shopList.getValue().size()));
+            }
+        });
     }
 
-    public LiveData<List<ShopInfo>>  getShops(){
-
-        return shops;
+    public LiveData<List<ShopInfo>> getShops() {
+        return shopList;
     }
 }

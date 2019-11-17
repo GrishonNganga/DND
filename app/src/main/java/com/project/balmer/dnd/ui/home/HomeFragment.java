@@ -1,6 +1,7 @@
 package com.project.balmer.dnd.ui.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,37 +26,38 @@ public class HomeFragment extends Fragment {
 
 
     private RecyclerView recyclerView;
-    private HomeViewModel homeViewModel;
-    private HomeAdapter adapter;
-    private ShopInfo shopInfo;
 
+    private HomeAdapter adapter;
+    private HomeViewModel homeViewModel;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+        homeViewModel.init();
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
+
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
-        homeViewModel.init();
-
-        recyclerView = root.findViewById(R.id.homeRecyclerView);
-        GridLayoutManager layoutManager = new GridLayoutManager(root.getContext(),1);
-        recyclerView.setLayoutManager(layoutManager);
-        adapter = new HomeAdapter(root.getContext(), homeViewModel.getShops().getValue(),HomeFragment.this);
-        recyclerView.setAdapter(adapter);
-
 
 
         homeViewModel.getShops().observe(this, new Observer<List<ShopInfo>>() {
             @Override
             public void onChanged(List<ShopInfo> shopInfos) {
-
-               if (shopInfos == null){
-                   Toast.makeText(root.getContext(), "Your list is empty", Toast.LENGTH_SHORT).show();
-               }
-                adapter.notifyDataSetChanged();
+                if (shopInfos == null){
+                    //Log.e("Empty list", String.valueOf(shopInfos.size()));
+                    Toast.makeText(root.getContext(), "Your list is empty", Toast.LENGTH_SHORT).show();
+                }
+                Log.e("Lets see", String.valueOf(shopInfos.size()));
+                recyclerView = root.findViewById(R.id.homeRecyclerView);
+                GridLayoutManager layoutManager = new GridLayoutManager(root.getContext(),1);
+                recyclerView.setLayoutManager(layoutManager);
+                adapter = new HomeAdapter(root.getContext(), shopInfos);
+                recyclerView.setAdapter(adapter);
             }
         });
-
         return root;
     }
 }

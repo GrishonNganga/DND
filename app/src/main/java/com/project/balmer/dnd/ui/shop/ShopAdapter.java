@@ -1,7 +1,7 @@
 package com.project.balmer.dnd.ui.shop;
 
 import android.content.Context;
-import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,17 +43,18 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.GoodHolder> {
     @Override
     public void onBindViewHolder(@NonNull GoodHolder holder, int position) {
         GoodInfo goodInfo = goods.get(position);
-        ShopInfo shopInfo = goodInfo.getShopInfo();
+        Log.e("Good", String.valueOf(goodInfo.getShopInfo()));
         String name = goodInfo.getName();
         holder.goodName.setText(name);
         if (goodInfo.getDescription() == null) {
-            holder.goodPrice.setText("");
+            holder.goodDescription.setText("");
         }
-        holder.goodPrice.setText(goodInfo.getDescription());
+        holder.goodDescription.setText(goodInfo.getDescription());
         int drawableId = context.getResources().getIdentifier(goodInfo.getImage(), "drawable", context.getPackageName());
         holder.goodImage.setImageResource(drawableId);
-
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -62,13 +63,13 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.GoodHolder> {
 
     public class GoodHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        public TextView goodName, goodPrice;
+        public TextView goodName, goodDescription;
         public ImageView goodImage, shopImage;
 
         public GoodHolder(@NonNull final View itemView) {
             super(itemView);
             goodName = itemView.findViewById(R.id.goodName);
-            goodPrice = itemView.findViewById(R.id.goodPrice);
+            goodDescription = itemView.findViewById(R.id.goodPrice);
             goodImage = itemView.findViewById(R.id.shopGoodImage);
             itemView.setOnClickListener(this);
         }
