@@ -23,6 +23,7 @@ import com.project.balmer.dnd.Model.GoodInfo;
 import com.project.balmer.dnd.Model.OrderInfo;
 import com.project.balmer.dnd.R;
 import com.project.balmer.dnd.ui.order.OrderViewModel;
+import com.squareup.picasso.Picasso;
 
 public class ShopOrder extends Fragment {
 
@@ -130,8 +131,11 @@ public class ShopOrder extends Fragment {
     }
 
     private void setViews() {
-        int drawableId = getContext().getResources().getIdentifier(good.getImage(), "drawable", getContext().getPackageName());
-        goodImage.setImageResource(drawableId);
+        Picasso.get()
+                .load(good.getImage().trim())
+                .resize(1050, 800)
+                .centerCrop()
+                .into(goodImage);
         goodTitle.setText(good.getName());
         goodPrice.setText(good.getPrice());
         goodDescription.setText(good.getDescription());

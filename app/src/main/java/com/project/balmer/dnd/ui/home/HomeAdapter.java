@@ -1,6 +1,7 @@
 package com.project.balmer.dnd.ui.home;
 
 import android.content.Context;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.project.balmer.dnd.Model.GoodInfo;
 import com.project.balmer.dnd.Model.ShopInfo;
 import com.project.balmer.dnd.R;
 import com.project.balmer.dnd.ui.shop.HomeShopSharedViewModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -51,8 +53,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ShopHolder> {
         List<GoodInfo> goodInfoList = shopInfo.getGoodInfo();
         String name = shopInfo.getName();
         holder.shopName.setText(name);
-        int resourceId = context.getResources().getIdentifier(shopInfo.getImage(), "drawable", context.getPackageName());
-        holder.shopImage.setImageResource(resourceId);
+        Picasso.get().setLoggingEnabled(true);
+        Picasso.get()
+                .load(shopInfo.getImage().trim())
+                .resize(300, 100)
+                .centerCrop()
+                .into(holder.shopImage);
         if (shopInfo.getGoodInfo() == null) {
             holder.shopGoods.setText("");
         } else if (shopInfo.getGoodInfo().get(position).getName() == null) {

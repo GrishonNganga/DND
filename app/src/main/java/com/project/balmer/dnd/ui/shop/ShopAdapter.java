@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.project.balmer.dnd.Model.GoodInfo;
 import com.project.balmer.dnd.Model.ShopInfo;
 import com.project.balmer.dnd.R;
+import com.squareup.picasso.Picasso;
 
 
 import java.util.List;
@@ -50,8 +51,12 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.GoodHolder> {
             holder.goodDescription.setText("");
         }
         holder.goodDescription.setText(goodInfo.getDescription());
-        int drawableId = context.getResources().getIdentifier(goodInfo.getImage(), "drawable", context.getPackageName());
-        holder.goodImage.setImageResource(drawableId);
+        Picasso.get().setLoggingEnabled(true);
+        Picasso.get()
+                .load(goodInfo.getImage().trim())
+                .resize(50, 50)
+                .centerCrop()
+                .into(holder.goodImage);
     }
 
 
@@ -64,7 +69,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.GoodHolder> {
     public class GoodHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView goodName, goodDescription;
-        public ImageView goodImage, shopImage;
+        public ImageView goodImage;
 
         public GoodHolder(@NonNull final View itemView) {
             super(itemView);

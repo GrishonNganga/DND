@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.project.balmer.dnd.Model.GoodInfo;
 import com.project.balmer.dnd.Model.ShopInfo;
 import com.project.balmer.dnd.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +52,11 @@ public class ShopFragment extends Fragment {
         shopImageView = root.findViewById(R.id.homeImage);
         shopName = root.findViewById(R.id.shopNameTitle);
 
-        int drawableId = root.getContext().getResources().getIdentifier(shopInfo.getImage(), "drawable", root.getContext().getPackageName());
-        shopImageView.setImageResource(drawableId);
+        Picasso.get()
+                .load(shopInfo.getImage().trim())
+                .resize(1050, 800)
+                .centerCrop()
+                .into(shopImageView);
         shopName.setText(shopInfo.getName());
 
         shopViewModel.getGoodss().observe(this, new Observer<List<GoodInfo>>() {
