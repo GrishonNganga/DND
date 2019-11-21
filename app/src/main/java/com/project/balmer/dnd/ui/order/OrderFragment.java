@@ -1,5 +1,6 @@
 package com.project.balmer.dnd.ui.order;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.TestLooperManager;
 import android.view.LayoutInflater;
@@ -50,13 +51,25 @@ public class OrderFragment extends Fragment {
             public void onChanged(String s) {
                 totalAmount.setText(s);
                 orderAdapter.notifyDataSetChanged();
+                
+                if (Integer.parseInt(s) > 0){
+                    button.setBackgroundColor(Color.rgb(161,18,56));
+                }
+                else {
+                    button.setBackgroundColor(android.R.drawable.btn_default);
+                }
+
             }
         });
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                orderViewModel.makeOrder();
+
                 OrderFragmentDirections.ActionNavSlideshowToNavHome action = OrderFragmentDirections.actionNavSlideshowToNavHome();
                 Navigation.findNavController(view).navigate(action);
+
+                orderViewModel.removeAllOrders();
             }
         });
 

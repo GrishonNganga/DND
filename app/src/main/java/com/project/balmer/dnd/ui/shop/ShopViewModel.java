@@ -1,5 +1,7 @@
 package com.project.balmer.dnd.ui.shop;
 
+import android.app.Activity;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -23,11 +25,11 @@ public class ShopViewModel extends ViewModel {
     private MutableLiveData<CustomerInfo> customerInfo;
     private MutableLiveData<String>  quantity = new MutableLiveData<>();
 
-    public void init() {
+    public void init(Activity activity) {
         if (goods != null) {
             return;
         }
-        dataManager = getdm();
+        dataManager = getdm(activity);
         goods = new MutableLiveData<>();
         dataManager.getGoodss(new DataManager.GoodCallBack() {
             @Override

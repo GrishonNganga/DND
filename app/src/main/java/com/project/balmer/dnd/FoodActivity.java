@@ -1,18 +1,18 @@
 package com.project.balmer.dnd;
 
+import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.util.Log;
 
-import android.view.View;
-
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -20,19 +20,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.view.MenuItem;
+
+import static com.project.balmer.dnd.SignUpActivity.firebaseAuth;
 
 public class FoodActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e("User status on fragment", FirebaseAuth.getInstance().getCurrentUser().getEmail());
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -46,6 +48,17 @@ public class FoodActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_logout:
+                firebaseAuth.signOut();
+                startActivity(new Intent(getBaseContext(), SignUpActivity.class));
+                finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

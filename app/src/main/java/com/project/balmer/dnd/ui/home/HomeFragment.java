@@ -1,5 +1,6 @@
 package com.project.balmer.dnd.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,8 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.project.balmer.dnd.FoodActivity;
 import com.project.balmer.dnd.Model.ShopInfo;
 import com.project.balmer.dnd.R;
 
@@ -31,10 +34,17 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
 
     @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
-        homeViewModel.init();
+        homeViewModel.init(getActivity());
+        Log.e("User status on fragment", FirebaseAuth.getInstance().getCurrentUser().getEmail());
+
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,

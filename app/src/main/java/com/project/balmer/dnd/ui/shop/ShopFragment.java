@@ -47,7 +47,7 @@ public class ShopFragment extends Fragment {
         shopViewModel =
                 ViewModelProviders.of(this).get(ShopViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_shop, container, false);
-        shopViewModel.init();
+        shopViewModel.init(getActivity());
 
         shopImageView = root.findViewById(R.id.homeImage);
         shopName = root.findViewById(R.id.shopNameTitle);

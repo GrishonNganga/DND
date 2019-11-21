@@ -8,34 +8,148 @@ tools:context=".SignUpActivity">
 
 
     <EditText
-        android:id="@+id/phoneNoTxt"
+        android:id="@+id/emailTxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:hint="Enter your Phone Number"
+        android:layout_marginTop="345dp"
+        android:hint="Email"
         android:textAlignment="center"
+        android:textSize="18sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/emailTxt1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Email"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/secondName"
+        app:layout_constraintStart_toStartOf="@+id/secondName"
+        app:layout_constraintTop_toBottomOf="@+id/secondName" />
+    <EditText
+        android:id="@+id/firstName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:hint="First name"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/secondName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Second name"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/firstName"
+        app:layout_constraintStart_toStartOf="@+id/firstName"
+        app:layout_constraintTop_toBottomOf="@+id/firstName" />
+
+    <EditText
+        android:id="@+id/phoneNo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Phone Number"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/secondName"
+        app:layout_constraintStart_toStartOf="@+id/secondName"
+        app:layout_constraintTop_toBottomOf="@+id/emailTxt1" />
+
+    <EditText
+        android:id="@+id/passwordTxt1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Password"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/phoneNo"
+        app:layout_constraintStart_toStartOf="@+id/phoneNo"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNo" />
+
+    <EditText
+        android:id="@+id/confirmPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Confirm password"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/passwordTxt1"
+        app:layout_constraintStart_toStartOf="@+id/passwordTxt1"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTxt1" />
+
     <Button
         android:id="@+id/signInBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:text="Sign In"
-        app:layout_constraintEnd_toEndOf="@+id/phoneNoTxt"
-        app:layout_constraintHorizontal_bias="0.272"
-        app:layout_constraintStart_toStartOf="@+id/phoneNoTxt"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNoTxt" />
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/passwordTxt"
+        app:layout_constraintStart_toStartOf="@+id/passwordTxt"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTxt" />
 
     <Button
         android:id="@+id/signUpBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Sign Up"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/passwordTxt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirmPassword" />
+
+    <EditText
+        android:id="@+id/passwordTxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/emailTxt"
+        app:layout_constraintStart_toStartOf="@+id/emailTxt"
+        app:layout_constraintTop_toBottomOf="@+id/emailTxt" />
+
+    <TextView
+        android:id="@+id/orSignUpTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:text="Sign Up"
-        app:layout_constraintEnd_toEndOf="@+id/phoneNoTxt"
-        app:layout_constraintStart_toEndOf="@+id/signInBtn"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNoTxt" />
+        android:layout_marginTop="25dp"
+        android:text="or Sign Up"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/signUpBtn"
+        app:layout_constraintTop_toBottomOf="@+id/signUpBtn" />
+
+    <TextView
+        android:id="@+id/orSignInTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="or Sign In"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/signUpBtn"
+        app:layout_constraintTop_toBottomOf="@+id/signUpBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
