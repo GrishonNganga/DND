@@ -1,6 +1,7 @@
 package com.project.balmer.dnd.ui.shop;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -97,10 +98,11 @@ public class ShopOrder extends Fragment {
                 if (howMany > 0){
                     OrderInfo order = new OrderInfo(null, null, good, String.valueOf(howMany));
                     //First initialize the Order but later will be pulling from Repo.
-                    orderViewModel.init();
+                    orderViewModel.init(getActivity());
                     //Add Order
                     orderViewModel.addOrder(order);
                     checkOut.setVisibility(View.VISIBLE);
+                    checkOut.setBackgroundColor(Color.rgb(161,18,56));
                 }
             }
         });
@@ -124,6 +126,7 @@ public class ShopOrder extends Fragment {
             @Override
             public void onClick(View view) {
                 shopViewModel.addQuantity();
+                addToCartOnlyBtn.setBackgroundColor(Color.rgb(161,18,56));
                 Toast.makeText(view.getContext(), "Clicked add", Toast.LENGTH_SHORT).show();
 
             }
@@ -141,7 +144,9 @@ public class ShopOrder extends Fragment {
         goodDescription.setText(good.getDescription());
 
         //Make checkout Invisible
+        checkOut.setBackgroundColor(android.R.drawable.btn_default);
         checkOut.setVisibility(View.INVISIBLE);
+
 
         shopViewModel.initQuantity();
     }
@@ -162,7 +167,9 @@ public class ShopOrder extends Fragment {
 
         int check = Integer.parseInt(quanti);
         if (check == 0)
-        checkOut.setVisibility(View.INVISIBLE);
+            addToCartOnlyBtn.setBackgroundColor(android.R.drawable.btn_default);
+            checkOut.setBackgroundColor(android.R.drawable.btn_default);
+            checkOut.setVisibility(View.INVISIBLE);
     }
 
 }

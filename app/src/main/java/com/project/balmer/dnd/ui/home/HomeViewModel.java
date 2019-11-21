@@ -1,5 +1,6 @@
 package com.project.balmer.dnd.ui.home;
 
+import android.app.Activity;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -17,13 +18,14 @@ public class HomeViewModel extends ViewModel {
 
     private MutableLiveData<List<ShopInfo>> shopList;
     private List<ShopInfo> shops;
+    private boolean isLoggedIn;
     private DataManager dataManager;
 
-    public void init() {
+    public void init(Activity activity) {
         if (shopList != null) {
             return;
         }
-        dataManager = getdm();
+        dataManager = getdm(activity);
         shopList = new MutableLiveData<>();
         dataManager.getShops(new DataManager.ShopCallBack() {
             @Override
@@ -32,6 +34,11 @@ public class HomeViewModel extends ViewModel {
                 Log.e("Shop on VModel", String.valueOf(shopList.getValue().size()));
             }
         });
+    }
+    public MutableLiveData<Boolean> getLogInStatus() {
+        MutableLiveData<Boolean> status = new MutableLiveData<>();
+        status.setValue(isLoggedIn);
+        return status;
     }
 
     public LiveData<List<ShopInfo>> getShops() {

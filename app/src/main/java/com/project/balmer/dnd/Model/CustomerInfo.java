@@ -1,9 +1,29 @@
 package com.project.balmer.dnd.Model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class CustomerInfo {
+
+    @SerializedName("id")
+    @Expose
     private String id;
+
+    @SerializedName("name")
+    @Expose
     private String name;
+
+    @SerializedName("phone")
+    @Expose
     private String phone;
+
+    @SerializedName("email")
+    @Expose
+    private String email;
+
+
+    @SerializedName("orders")
+    @Expose
     private OrderInfo orderInfo;
 
     public String getId() {
@@ -38,9 +58,18 @@ public class CustomerInfo {
         this.orderInfo = orderInfo;
     }
 
-    public CustomerInfo(String id, String name, String phone, OrderInfo orderInfo){
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public CustomerInfo(String id, String name, String email, String phone, OrderInfo orderInfo){
         this.id = id;
         this.name = name;
+        this.email = email;
         this.phone = phone;
         this.orderInfo = orderInfo;
     }
