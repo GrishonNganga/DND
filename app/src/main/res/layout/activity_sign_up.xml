@@ -7,149 +7,275 @@ android:layout_height="match_parent"
 tools:context=".SignUpActivity">
 
 
-    <EditText
-        android:id="@+id/emailTxt"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="345dp"
-        android:hint="Email"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:visibility="invisible"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/emailTxt1"
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+
+            android:id="@+id/materialEmailText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mtf_image="@drawable/ic_home_24dp"
+            android:visibility="invisible"
+            app:mtf_labelColor="#666"
+            app:mtf_hasFocus="false"
+            app:mtf_animationDuration="500"
+            app:mtf_openKeyboardOnFocus="true"
+            >
+
+            <EditText
+
+                android:id="@+id/emailTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:visibility="invisible"
+                />
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:id="@+id/materialPasswordText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/materialEmailText"
+            app:layout_constraintStart_toStartOf="@+id/materialEmailText"
+            app:layout_constraintTop_toBottomOf="@+id/materialEmailText"
+            app:mtf_image="@drawable/ic_home_24dp"
+            android:visibility="invisible"
+            app:mtf_labelColor="#666">
+
+            <EditText
+                android:id="@+id/passwordTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:visibility="invisible" />
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+        <Button
+            android:id="@+id/signInBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Sign In"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/materialPasswordText"
+            app:layout_constraintStart_toStartOf="@+id/materialPasswordText"
+            app:layout_constraintTop_toBottomOf="@+id/materialPasswordText" />
+
+        <TextView
+            android:id="@+id/orSignUpTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="or Sign Up"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signInBtn"
+            app:layout_constraintVertical_bias="1.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Email"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/secondName"
-        app:layout_constraintStart_toStartOf="@+id/secondName"
-        app:layout_constraintTop_toBottomOf="@+id/secondName" />
-    <EditText
-        android:id="@+id/firstName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:hint="First name"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:visibility="invisible"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/secondName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Second name"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/firstName"
-        app:layout_constraintStart_toStartOf="@+id/firstName"
-        app:layout_constraintTop_toBottomOf="@+id/firstName" />
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:id="@+id/materialEmailText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:mtf_image="@drawable/ic_home_24dp"
+            app:mtf_labelColor="#666">
 
-    <EditText
-        android:id="@+id/phoneNo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Phone Number"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/secondName"
-        app:layout_constraintStart_toStartOf="@+id/secondName"
-        app:layout_constraintTop_toBottomOf="@+id/emailTxt1" />
+            <EditText
+                android:id="@+id/emailTxt1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:visibility="invisible" />
+        </com.github.florent37.materialtextfield.MaterialTextField>
 
-    <EditText
-        android:id="@+id/passwordTxt1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Password"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/phoneNo"
-        app:layout_constraintStart_toStartOf="@+id/phoneNo"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNo" />
 
-    <EditText
-        android:id="@+id/confirmPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Confirm password"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/passwordTxt1"
-        app:layout_constraintStart_toStartOf="@+id/passwordTxt1"
-        app:layout_constraintTop_toBottomOf="@+id/passwordTxt1" />
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:id="@+id/materialFirstNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/materialEmailText1"
+            app:layout_constraintStart_toStartOf="@+id/materialEmailText1"
+            app:layout_constraintTop_toBottomOf="@+id/materialEmailText1"
+            app:mtf_image="@drawable/ic_home_24dp"
+            android:visibility="invisible"
+            app:mtf_labelColor="#666">
 
-    <Button
-        android:id="@+id/signInBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Sign In"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/passwordTxt"
-        app:layout_constraintStart_toStartOf="@+id/passwordTxt"
-        app:layout_constraintTop_toBottomOf="@+id/passwordTxt" />
+            <EditText
+                android:id="@+id/firstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="First name"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:visibility="invisible" />
+        </com.github.florent37.materialtextfield.MaterialTextField>
 
-    <Button
-        android:id="@+id/signUpBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Sign Up"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/passwordTxt"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPassword" />
 
-    <EditText
-        android:id="@+id/passwordTxt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/emailTxt"
-        app:layout_constraintStart_toStartOf="@+id/emailTxt"
-        app:layout_constraintTop_toBottomOf="@+id/emailTxt" />
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:id="@+id/materialSecondNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/materialFirstNameText"
+            app:layout_constraintStart_toStartOf="@+id/materialFirstNameText"
+            app:layout_constraintTop_toBottomOf="@+id/materialFirstNameText"
+            app:mtf_image="@drawable/ic_home_24dp"
+            android:visibility="invisible"
+            app:mtf_labelColor="#666">
 
-    <TextView
-        android:id="@+id/orSignUpTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="or Sign Up"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/signUpBtn"
-        app:layout_constraintTop_toBottomOf="@+id/signUpBtn" />
+            <EditText
+                android:id="@+id/secondName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Second name"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:visibility="invisible" />
+        </com.github.florent37.materialtextfield.MaterialTextField>
 
-    <TextView
-        android:id="@+id/orSignInTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="or Sign In"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/signUpBtn"
-        app:layout_constraintTop_toBottomOf="@+id/signUpBtn" />
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:id="@+id/materialPhoneText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/materialSecondNameText"
+            app:layout_constraintStart_toStartOf="@+id/materialSecondNameText"
+            app:layout_constraintTop_toBottomOf="@+id/materialSecondNameText"
+            app:mtf_image="@drawable/ic_home_24dp"
+            android:visibility="invisible"
+            app:mtf_labelColor="#666">
+
+            <EditText
+                android:id="@+id/phoneNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:visibility="invisible" />
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:id="@+id/materialPasswordText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/materialPhoneText"
+            app:layout_constraintStart_toStartOf="@+id/materialPhoneText"
+            app:layout_constraintTop_toBottomOf="@+id/materialPhoneText"
+            app:mtf_image="@drawable/ic_home_24dp"
+            android:visibility="invisible"
+            app:mtf_labelColor="#666">
+
+            <EditText
+                android:id="@+id/passwordTxt1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:visibility="invisible" />
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:id="@+id/materialConfirmPasswordText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/materialPasswordText1"
+            app:layout_constraintStart_toStartOf="@+id/materialPasswordText1"
+            app:layout_constraintTop_toBottomOf="@+id/materialPasswordText1"
+            app:mtf_image="@drawable/ic_home_24dp"
+            android:visibility="invisible"
+            app:mtf_labelColor="#666">
+
+            <EditText
+                android:id="@+id/confirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirm password"
+                android:inputType="textPassword"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:visibility="invisible" />
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+
+        <Button
+            android:id="@+id/signUpBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Sign Up"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialConfirmPasswordText1" />
+
+        <ProgressBar
+            android:id="@+id/spinner"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/signUpBtn"
+            app:layout_constraintTop_toBottomOf="@+id/signUpBtn" />
+
+        <TextView
+            android:id="@+id/orSignInTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="or Sign In"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signUpBtn"
+            app:layout_constraintVertical_bias="1.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

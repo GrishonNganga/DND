@@ -23,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import static com.project.balmer.dnd.SignUpActivity.firebaseAuth;
+import static com.project.balmer.dnd.SignUpActivity.stateListener;
 
 public class FoodActivity extends AppCompatActivity {
 
@@ -49,6 +50,8 @@ public class FoodActivity extends AppCompatActivity {
 
 
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

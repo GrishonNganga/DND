@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -54,11 +55,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ShopHolder> {
         String name = shopInfo.getName();
         holder.shopName.setText(name);
         Picasso.get().setLoggingEnabled(true);
+        holder.spinner.setVisibility(View.VISIBLE);
         Picasso.get()
                 .load(shopInfo.getImage().trim())
                 .resize(300, 100)
                 .centerCrop()
                 .into(holder.shopImage);
+        holder.spinner.setVisibility(View.GONE);
         if (shopInfo.getGoodInfo() == null) {
             holder.shopGoods.setText("");
         } else if (shopInfo.getGoodInfo().get(position).getName() == null) {
@@ -77,12 +80,14 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ShopHolder> {
 
         public TextView shopName, shopGoods;
         public ImageView shopImage;
+        public ProgressBar spinner;
 
         public ShopHolder(@NonNull final View itemView) {
             super(itemView);
             shopName = itemView.findViewById(R.id.shopName);
             shopGoods = itemView.findViewById(R.id.goodInfo);
             shopImage = itemView.findViewById(R.id.homeImage);
+            spinner = itemView.findViewById(R.id.spinner);
             itemView.setOnClickListener(this);
         }
 
