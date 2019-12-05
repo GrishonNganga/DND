@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.project.balmer.dnd.Model.GoodInfo;
@@ -33,6 +34,7 @@ public class ShopFragment extends Fragment {
     private ImageView shopImageView;
     private ShopInfo shopInfo;
     private TextView shopName;
+    private ProgressBar spinner;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +53,8 @@ public class ShopFragment extends Fragment {
 
         shopImageView = root.findViewById(R.id.homeImage);
         shopName = root.findViewById(R.id.shopNameTitle);
+        spinner = root.findViewById(R.id.spinner);
+        spinner.setVisibility(View.VISIBLE);
 
         Picasso.get()
                 .load(shopInfo.getImage().trim())
@@ -75,7 +79,7 @@ public class ShopFragment extends Fragment {
                 recyclerView.setLayoutManager(layoutManager);
                 adapter = new ShopAdapter(root.getContext(), newList);
                 recyclerView.setAdapter(adapter);
-
+                spinner.setVisibility(View.GONE);
             }
         });
 

@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class ShopOrder extends Fragment {
     private ImageView goodImage;
     private TextView goodTitle, goodPrice, goodDescription;
     private OrderViewModel orderViewModel;
+    private ProgressBar spinner;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ public class ShopOrder extends Fragment {
                 ViewModelProviders.of(this).get(ShopViewModel.class);
         View view = inflater.inflate(R.layout.fragment_shop_order, container, false);
         orderViewModel = ViewModelProviders.of(this).get(OrderViewModel.class);
+        spinner = view.findViewById(R.id.spinner);
 
         //Add Views...
         addViews(view);
@@ -134,6 +137,7 @@ public class ShopOrder extends Fragment {
     }
 
     private void setViews() {
+        spinner.setVisibility(View.VISIBLE);
         Picasso.get()
                 .load(good.getImage().trim())
                 .resize(1050, 800)
@@ -149,6 +153,7 @@ public class ShopOrder extends Fragment {
 
 
         shopViewModel.initQuantity();
+        spinner.setVisibility(View.GONE);
     }
 
     private void addViews(View view) {

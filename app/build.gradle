@@ -53,6 +53,10 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
 
 
+    //Custom Edittext
+    implementation 'com.github.florent37:materialtextfield:1.0.7'
+
+
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.1.0'
     testImplementation 'junit:junit:4.12'

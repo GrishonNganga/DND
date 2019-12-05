@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ public class OrderFragment extends Fragment {
     private OrderViewModel orderViewModel;
     RecyclerView recyclerView;
     private OrderAdapter orderAdapter;
+    private ProgressBar spinner;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +46,8 @@ public class OrderFragment extends Fragment {
         final View root = inflater.inflate(R.layout.fragment_checkout, container, false);
 
         //Set UIs
+        spinner = root.findViewById(R.id.spinner);
+        spinner.setVisibility(View.VISIBLE);
         Button button = root.findViewById(R.id.buyNow);
         TextView totalAmount = root.findViewById(R.id.totalAmount);
         orderViewModel.totalAmount().observe(this, new Observer<String>() {
@@ -79,6 +83,7 @@ public class OrderFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         orderAdapter = new OrderAdapter(root.getContext(), orderViewModel.getOrders().getValue(), this);
         recyclerView.setAdapter(orderAdapter);
+        spinner.setVisibility(View.GONE);
 
         orderViewModel.getOrders().observe(this, new Observer<List<OrderInfo>>() {
             @Override

@@ -17,9 +17,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.florent37.materialtextfield.MaterialTextField;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -31,8 +33,10 @@ public class SignUpActivity extends AppCompatActivity {
     public static FirebaseAuth firebaseAuth;
     public static FirebaseAuth.AuthStateListener stateListener;
     EditText firstName, secondName, phoneNo, confirmPassword, emailTxt, emailTxt1,  passwordTxt, passwordTxt1;
+    MaterialTextField firstName1, secondName1, phoneNo1, confirmPassword1, emailTxt11, emailTxt111,  passwordTxt11, passwordTxt111;
     TextView orSignUpTxt, orSignInTxt;
     Button signInBtn, signUpBtn;
+    ProgressBar spinner;
     private SignUpViewModel signUpViewModel;
     private int a, b, c, d, e,f;
 
@@ -58,18 +62,31 @@ public class SignUpActivity extends AppCompatActivity {
         signUpViewModel = ViewModelProviders.of(this).get(SignUpViewModel.class);
         signUpViewModel.init(getParent());
 
-        firstName = findViewById(R.id.firstName);
-        secondName = findViewById(R.id.secondName);
-        phoneNo = findViewById(R.id.phoneNo);
-        emailTxt = findViewById(R.id.emailTxt);
-        emailTxt1 = findViewById(R.id.emailTxt1);
-        passwordTxt = findViewById(R.id.passwordTxt);
-        passwordTxt1 = findViewById(R.id.passwordTxt1);
-        confirmPassword = findViewById(R.id.confirmPassword);
+        firstName1 = findViewById(R.id.materialFirstNameText);
+        secondName1 = findViewById(R.id.materialSecondNameText);
+        phoneNo1 = findViewById(R.id.materialPhoneText);
+        emailTxt11 = findViewById(R.id.materialEmailText);
+        emailTxt111 = findViewById(R.id.materialEmailText1);
+        passwordTxt11 = findViewById(R.id.materialPasswordText);
+        passwordTxt111 = findViewById(R.id.materialPasswordText1);
+        confirmPassword1 = findViewById(R.id.materialConfirmPasswordText1);
         signInBtn = findViewById(R.id.signInBtn);
         signUpBtn = findViewById(R.id.signUpBtn);
         orSignInTxt = findViewById(R.id.orSignInTxt);
         orSignUpTxt = findViewById(R.id.orSignUpTxt);
+
+        //Used to set up the views for the custom login UI
+        firstName = findViewById(R.id.firstName);
+        secondName = findViewById(R.id.secondName);
+        phoneNo = findViewById(R.id.phoneNo);
+        confirmPassword = findViewById(R.id.confirmPassword);
+        emailTxt = findViewById(R.id.emailTxt);
+        emailTxt1 = findViewById(R.id.emailTxt1);
+        passwordTxt = findViewById(R.id.passwordTxt);
+        passwordTxt1 = findViewById(R.id.passwordTxt1);
+        spinner = findViewById(R.id.spinner);
+
+        spinner.setVisibility(View.GONE);
 
         appearSignInViews();
 
@@ -95,14 +112,17 @@ public class SignUpActivity extends AppCompatActivity {
     private void disappearSignInViews() {
         emailTxt.setText("");
         passwordTxt.setText("");
-        emailTxt.setVisibility(View.INVISIBLE);
-        passwordTxt.setVisibility(View.INVISIBLE);
+        emailTxt11.setVisibility(View.INVISIBLE);
+        passwordTxt11.setVisibility(View.INVISIBLE);
         signInBtn.setVisibility(View.INVISIBLE);
         orSignUpTxt.setVisibility(View.INVISIBLE);
 
     }
 
     private void disappearSignUpViews() {
+
+
+
         firstName.setText("");
         secondName.setText("");
         emailTxt1.setText("");
@@ -110,24 +130,24 @@ public class SignUpActivity extends AppCompatActivity {
         passwordTxt1.setText("");
         confirmPassword.setText("");
 
-        firstName.setVisibility(View.INVISIBLE);
-        secondName.setVisibility(View.INVISIBLE);
-        emailTxt1.setVisibility(View.INVISIBLE);
-        phoneNo.setVisibility(View.INVISIBLE);
-        passwordTxt1.setVisibility(View.INVISIBLE);
-        confirmPassword.setVisibility(View.INVISIBLE);
+        firstName1.setVisibility(View.INVISIBLE);
+        secondName1.setVisibility(View.INVISIBLE);
+        emailTxt111.setVisibility(View.INVISIBLE);
+        phoneNo1.setVisibility(View.INVISIBLE);
+        passwordTxt111.setVisibility(View.INVISIBLE);
+        confirmPassword1.setVisibility(View.INVISIBLE);
         signUpBtn.setVisibility(View.INVISIBLE);
         orSignInTxt.setVisibility(View.INVISIBLE);
 
     }
 
     private void appearingSignUpViews(){
-        firstName.setVisibility(View.VISIBLE);
-        secondName.setVisibility(View.VISIBLE);
-        emailTxt1.setVisibility(View.VISIBLE);
-        phoneNo.setVisibility(View.VISIBLE);
-        passwordTxt1.setVisibility(View.VISIBLE);
-        confirmPassword.setVisibility(View.VISIBLE);
+        firstName1.setVisibility(View.VISIBLE);
+        secondName1.setVisibility(View.VISIBLE);
+        emailTxt111.setVisibility(View.VISIBLE);
+        phoneNo1.setVisibility(View.VISIBLE);
+        passwordTxt111.setVisibility(View.VISIBLE);
+        confirmPassword1.setVisibility(View.VISIBLE);
         signUpBtn.setVisibility(View.VISIBLE);
         orSignInTxt.setVisibility(View.VISIBLE);
 
@@ -238,8 +258,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void appearSignInViews() {
 
-        emailTxt.setVisibility(View.VISIBLE);
-        passwordTxt.setVisibility(View.VISIBLE);
+        emailTxt11.setVisibility(View.VISIBLE);
+        passwordTxt11.setVisibility(View.VISIBLE);
         signInBtn.setVisibility(View.VISIBLE);
         orSignUpTxt.setVisibility(View.VISIBLE);
 
@@ -312,6 +332,7 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(getBaseContext(), "No Internet connection", Toast.LENGTH_SHORT).show();
 
                     } else {
+                        spinner.setVisibility(View.VISIBLE);
                         firebaseAuth.signInWithEmailAndPassword(email, password)
                                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
@@ -319,12 +340,14 @@ public class SignUpActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
 
+                                            spinner.setVisibility(View.GONE);
                                             Log.e("SignIn success code", task.getResult().toString());
                                             Intent signInIntent = new Intent(getBaseContext(), FoodActivity.class);
                                             startActivity(signInIntent);
 
 
                                         } else {
+                                            spinner.setVisibility(View.GONE);
                                             Log.e("SignIn failure code", task.getException().getMessage());
                                             String error = task.getException().getMessage();
                                             Toast.makeText(getBaseContext(), error, Toast.LENGTH_SHORT).show();
@@ -361,6 +384,7 @@ public class SignUpActivity extends AppCompatActivity {
                     if (activeNetworkInfo == null) {
                         Toast.makeText(getBaseContext(), "No Internet connection", Toast.LENGTH_SHORT).show();
                     } else {
+                        spinner.setVisibility(View.VISIBLE);
                         firebaseAuth.createUserWithEmailAndPassword(email, passw)
                                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                     @Override
@@ -371,11 +395,13 @@ public class SignUpActivity extends AppCompatActivity {
                                             signUpViewModel.createNewUserOnDb(customerInfo, new SignUpViewModel.FinishedTask() {
                                                 @Override
                                                 public void onSuccess(boolean done) {
+                                                    spinner.setVisibility(View.GONE);
                                                     Intent signInIntent = new Intent(getBaseContext(), FoodActivity.class);
                                                     startActivity(signInIntent);
                                                 }
                                             });
                                         } else {
+                                            spinner.setVisibility(View.GONE);
                                             Log.e("Signup failure code", task.getException().getMessage());
                                             String error = task.getException().getMessage();
                                             Toast.makeText(getBaseContext(), error, Toast.LENGTH_SHORT).show();

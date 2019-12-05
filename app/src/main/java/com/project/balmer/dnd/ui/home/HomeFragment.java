@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,6 +33,7 @@ public class HomeFragment extends Fragment {
 
     private HomeAdapter adapter;
     private HomeViewModel homeViewModel;
+    private ProgressBar spinner;
 
     @Override
     public void onResume() {
@@ -53,6 +55,10 @@ public class HomeFragment extends Fragment {
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
 
 
+        spinner = root.findViewById(R.id.spinner);
+        spinner.setVisibility(View.VISIBLE);
+
+
         homeViewModel.getShops().observe(this, new Observer<List<ShopInfo>>() {
             @Override
             public void onChanged(List<ShopInfo> shopInfos) {
@@ -66,6 +72,7 @@ public class HomeFragment extends Fragment {
                 recyclerView.setLayoutManager(layoutManager);
                 adapter = new HomeAdapter(root.getContext(), shopInfos);
                 recyclerView.setAdapter(adapter);
+                spinner.setVisibility(View.GONE);
             }
         });
         return root;
