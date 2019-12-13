@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".SignUpActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,17 +22,16 @@ tools:context=".SignUpActivity">
             android:id="@+id/materialEmailText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:mtf_image="@drawable/ic_home_24dp"
-            android:visibility="invisible"
-            app:mtf_labelColor="#666"
-            app:mtf_hasFocus="false"
             app:mtf_animationDuration="500"
-            app:mtf_openKeyboardOnFocus="true"
-            >
+            app:mtf_hasFocus="false"
+            app:mtf_image="@drawable/ic_home_24dp"
+            app:mtf_labelColor="#666"
+            app:mtf_openKeyboardOnFocus="true">
 
             <EditText
 
@@ -43,8 +42,7 @@ tools:context=".SignUpActivity">
                 android:inputType="textEmailAddress"
                 android:textAlignment="center"
                 android:textSize="18sp"
-                android:visibility="invisible"
-                />
+                android:visibility="invisible" />
         </com.github.florent37.materialtextfield.MaterialTextField>
 
 
@@ -52,11 +50,11 @@ tools:context=".SignUpActivity">
             android:id="@+id/materialPasswordText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="@+id/materialEmailText"
             app:layout_constraintStart_toStartOf="@+id/materialEmailText"
             app:layout_constraintTop_toBottomOf="@+id/materialEmailText"
             app:mtf_image="@drawable/ic_home_24dp"
-            android:visibility="invisible"
             app:mtf_labelColor="#666">
 
             <EditText
@@ -109,7 +107,6 @@ tools:context=".SignUpActivity">
             android:id="@+id/materialEmailText1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -135,11 +132,11 @@ tools:context=".SignUpActivity">
             android:id="@+id/materialFirstNameText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="@+id/materialEmailText1"
             app:layout_constraintStart_toStartOf="@+id/materialEmailText1"
             app:layout_constraintTop_toBottomOf="@+id/materialEmailText1"
             app:mtf_image="@drawable/ic_home_24dp"
-            android:visibility="invisible"
             app:mtf_labelColor="#666">
 
             <EditText
@@ -157,11 +154,11 @@ tools:context=".SignUpActivity">
             android:id="@+id/materialSecondNameText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="@+id/materialFirstNameText"
             app:layout_constraintStart_toStartOf="@+id/materialFirstNameText"
             app:layout_constraintTop_toBottomOf="@+id/materialFirstNameText"
             app:mtf_image="@drawable/ic_home_24dp"
-            android:visibility="invisible"
             app:mtf_labelColor="#666">
 
             <EditText
@@ -178,11 +175,11 @@ tools:context=".SignUpActivity">
             android:id="@+id/materialPhoneText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="@+id/materialSecondNameText"
             app:layout_constraintStart_toStartOf="@+id/materialSecondNameText"
             app:layout_constraintTop_toBottomOf="@+id/materialSecondNameText"
             app:mtf_image="@drawable/ic_home_24dp"
-            android:visibility="invisible"
             app:mtf_labelColor="#666">
 
             <EditText
@@ -200,11 +197,11 @@ tools:context=".SignUpActivity">
             android:id="@+id/materialPasswordText1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="@+id/materialPhoneText"
             app:layout_constraintStart_toStartOf="@+id/materialPhoneText"
             app:layout_constraintTop_toBottomOf="@+id/materialPhoneText"
             app:mtf_image="@drawable/ic_home_24dp"
-            android:visibility="invisible"
             app:mtf_labelColor="#666">
 
             <EditText
@@ -222,11 +219,11 @@ tools:context=".SignUpActivity">
             android:id="@+id/materialConfirmPasswordText1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="@+id/materialPasswordText1"
             app:layout_constraintStart_toStartOf="@+id/materialPasswordText1"
             app:layout_constraintTop_toBottomOf="@+id/materialPasswordText1"
             app:mtf_image="@drawable/ic_home_24dp"
-            android:visibility="invisible"
             app:mtf_labelColor="#666">
 
             <EditText
