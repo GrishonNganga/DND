@@ -29,6 +29,9 @@ public class OrderViewModel extends ViewModel {
     private static OrderInfo order;
 
     public static LiveData<List<OrderInfo>> getOrders(){
+        if (orders == null){
+            orders = new MutableLiveData<>();
+        }
         return orders;
     }
 
@@ -82,6 +85,10 @@ public class OrderViewModel extends ViewModel {
 
     }
     public LiveData<String> totalAmount(){
+        if (cash == null){
+            cash = new MutableLiveData<>();
+            cash.setValue("0");
+        }
         return cash;
     }
 

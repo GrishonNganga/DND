@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.project.balmer.dnd.Model.OrderInfo;
 import com.project.balmer.dnd.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder> {
@@ -56,7 +57,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
 
     @Override
     public int getItemCount() {
-
+        if (orders == null){
+            orders = new ArrayList<>();
+        }
         return orders.size();
     }
 
